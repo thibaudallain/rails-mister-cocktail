@@ -1,0 +1,25 @@
+<h1><%= @cocktail.name %></h1>
+
+<% @cocktail.ingredients.each do |ingredient| %>
+  <%= ingredient.name %>
+  <% ingredient.doses.each do |dose| %>
+    <%= dose.description %>
+    <%= link_to "Delete", cocktail_dose_path(@cocktail), method: :delete %>
+  <% end %>
+<% end %>
+
+<br>
+<br>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+<%= f.association :ingredient %>
+<%= f.input :description %>
+<%= f.submit %>
+<% end %>
+
+<br>
+<br>
+
+<%= link_to "Back to cocktails", cocktails_path %>
+<%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail)  %>
+
