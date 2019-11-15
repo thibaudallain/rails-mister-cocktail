@@ -23,7 +23,8 @@ import { initSelect2 } from '../components/init_select2';
 
 var options = {
   strings: ['Mojito', 'Cosmopolitan'],
-  typeSpeed: 40
+  typeSpeed: 40,
+  loop: true,
 };
 
 var typed = new Typed('#q', options);
