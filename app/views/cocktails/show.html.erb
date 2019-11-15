@@ -3,7 +3,7 @@
     <div class="under-banner">
       <div class="card shadow-sm" style="width: 25 * $;">
         <div class="card bg-dark text-white">
-          <%= image_tag @cocktail.url, class: "card-img-top coveredimg", height: 500 %>
+          <%= cl_image_tag @cocktail.photo.key, height: 500, crop: :scale, class: "card-img-top coveredimg" %>
           <div class="card-img-overlay">
             <h1 class="card-title"><%= @cocktail.name %></h1>
           </div>
