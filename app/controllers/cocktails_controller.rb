@@ -3,7 +3,7 @@ class CocktailsController < ApplicationController
     if params[:q].nil?
       @cocktails = Cocktail.all
     else
-      @cocktails = Cocktail.where(name: params[:q])
+      @cocktails = Cocktail.where("name LIKE '%#{params[:q]}%'")
     end
   end
 
