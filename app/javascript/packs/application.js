@@ -17,10 +17,17 @@
 import 'bootstrap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import Typed from 'typed.js';
 import 'select2/dist/css/select2.css';
-
 import { initSelect2 } from '../components/init_select2';
+
+var options = {
+  strings: ['Mojito', 'Cosmopolitan'],
+  typeSpeed: 40
+};
+
+var typed = new Typed('#q', options);
+
 
 
 initSelect2();
