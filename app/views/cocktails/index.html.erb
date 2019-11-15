@@ -1,6 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1509807995916-c332365e2d9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3371&q=80);">
   <div class="row justify-content-center align-items-center">
-    <div class="col-4">
+    <div class="col-xl-4 col-10 py-5">
       <h1>Un petit godet ?</h1>
       <h2 class="text-white">(<%= Cocktail.count %> Recettes)</h2>
       <%= link_to "Partage ta recette", new_cocktail_path ,class: "btn btn-light mb-5"  %>
@@ -9,7 +9,7 @@
         <%= submit_tag "Search", class: "btn btn-primary ml-2" %>
       <% end %>
     </div>
-    <div class="col-4 p-5">
+    <div class="col-4 p-5" id="carousel-banner">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

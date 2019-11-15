@@ -17,6 +17,18 @@
   top: -40px;
 }
 
+@media(max-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  #carousel-banner {
+    display: none;
+  }
+}
+
+
 p {
   margin: 0;
 }
+
+
