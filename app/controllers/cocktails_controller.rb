@@ -1,11 +1,14 @@
 class CocktailsController < ApplicationController
   def index
-    @cocktails = Cocktail.all
+    if params[:q].nil?
+      @cocktails = Cocktail.all
+    else
+      @cocktails = Cocktail.where(name: params[:q])
+    end
   end
 
   def new
     @cocktail = Cocktail.new
-    @ingredients = Ingredient.all
   end
 
   def edit
@@ -25,6 +28,12 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.find(params[:id])
     @dose = Dose.new
     @ingredient = params['ingredient'].nil? ? Ingredient.find(3) : Ingredient.find(params['ingredient'])
+  end
+
+  def destroy
+    @cocktail = Cocktail.find(params[:id])
+    @cocktail.destroy
+    redirect_to root_path
   end
 
   private

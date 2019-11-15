@@ -3,6 +3,10 @@
     <div class="col-4">
       <h1>Un petit godet ?</h1>
       <%= link_to "Tu veux voir ma recette?", new_cocktail_path ,class: "btn btn-light"  %>
+      <%= form_tag root_path, method: :get do %>
+        <%= text_field_tag :q %>
+        <%= submit_tag("Search") %>
+      <% end %>
     </div>
     <div class="col-4 p-5">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -71,6 +75,7 @@
               <% end %>
             </ul>
           <% end %>
+          <%= link_to "Supprimer", cocktail_path(cocktail), method: :destroy, class: "btn btn-danger rounded mt-4" %>
         </p>
       </div>
     </div>
