@@ -2,7 +2,7 @@
   <div class="row justify-content-center align-items-center">
     <div class="col-4">
       <h1>Un petit godet ?</h1>
-      <h2>(<%= Cocktail.count %> Recettes)</h2>
+      <h2 class="text-white">(<%= Cocktail.count %> Recettes)</h2>
       <%= link_to "Partage ta recette", new_cocktail_path ,class: "btn btn-light mb-5"  %>
       <%= form_tag root_path, method: :get, class: "form-inline" do %>
         <%= text_field_tag :q %>
