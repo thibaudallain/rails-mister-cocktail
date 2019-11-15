@@ -1,15 +1,37 @@
-<h1>Cocktails</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1570813092574-b4cccfc58f9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);">
+  <div class="container">
+    <h1>Welcome to your <strong>fucking</strong> cocktail manager!</h1>
+    <%= link_to "Create one now", new_cocktail_path ,class: "btn btn-light"  %>
+  </div>
+</div>
 
-<% @cocktails.each do |cocktail| %>
-  <%= link_to cocktail.name, cocktail_path(cocktail) %>
-  <% cocktail.ingredients.each do |ingredient| %>
-    <%= ingredient.name %>
-    <% ingredient.doses.each do |dose| %>
-      <%= dose.description %>
-    <% end %>
+<div class="under-banner">
+  <div class="cards px-5">
+  <% @cocktails.each do |cocktail| %>
+    <div class="card shadow-sm" data-aos="flip-left" style="width: 25 * $;">
+      <%= link_to cocktail_path(cocktail) do %>
+        <div class="card bg-dark text-white">
+          <%= image_tag cocktail.url, class: "card-img-top coveredimg", height: 200 %>
+          <div class="card-img-overlay">
+            <h1 class="card-title"><%= cocktail.name %></h1>
+          </div>
+        </div>
+      <% end %>
+      <div class="card-body">
+        <p class="card-text">
+          <% cocktail.ingredients.each do |ingredient| %>
+            <ul class="list-group list-group-flush">
+              <% ingredient.doses.each do |dose| %>
+                <li class="list-group-item"><%= ingredient.name %> : <%= dose.description %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </p>
+      </div>
+    </div>
   <% end %>
-<% end %>
+  </div>
+</div>
 
-<br>
 
-<%= link_to "Create", new_cocktail_path, class: "btn btn-primary" %>
+

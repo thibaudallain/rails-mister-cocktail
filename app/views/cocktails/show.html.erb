@@ -1,25 +1,45 @@
-<h1><%= @cocktail.name %></h1>
+<div class="row justify-content-center align-items-start mt-5">
+  <div class="col-6">
+    <div class="under-banner">
+      <div class="card shadow-sm" style="width: 25 * $;">
+        <div class="card bg-dark text-white">
+          <%= image_tag @cocktail.url, class: "card-img-top coveredimg", height: 500 %>
+          <div class="card-img-overlay">
+            <h1 class="card-title"><%= @cocktail.name %></h1>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <% @cocktail.ingredients.each do |ingredient| %>
+              <ul class="list-group list-group-flush mx-5">
+                <% ingredient.doses.each do |dose| %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center px-5">
+                    <p><%= ingredient.name %> : <%= dose.description %></p>
+                    <%= link_to cocktail_dose_path(@cocktail, dose), method: :delete do %>
+                    <i class="fas fa-trash"></i>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="p-5 bg-light rounded shadow-sm mt-5">
+      <h1 class="mb-5">Add an ingredient</h1>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= select_tag "ingredient", options_from_collection_for_select(Ingredient.all, :id, :name, @ingredient), class: "select2 w-100" %>
+      <%= f.input :description, class: "m-5 p-5" %>
+      <%= f.submit "Add an ingredient!", class: "btn btn-success" %>
+      <% end %>
+      <%= link_to "Back to cocktails", root_path, class: "btn btn-primary mt-5" %>
+    </div>
+  </div>
+</div>
 
-<% @cocktail.ingredients.each do |ingredient| %>
-  <%= ingredient.name %>
-  <% ingredient.doses.each do |dose| %>
-    <%= dose.description %>
-    <%= link_to "Delete", cocktail_dose_path(@cocktail), method: :delete %>
-  <% end %>
-<% end %>
 
-<br>
-<br>
 
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-<%= f.association :ingredient %>
-<%= f.input :description %>
-<%= f.submit %>
-<% end %>
-
-<br>
-<br>
-
-<%= link_to "Back to cocktails", cocktails_path %>
-<%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail)  %>
 
